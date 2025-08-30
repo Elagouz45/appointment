@@ -1,0 +1,13 @@
+<div class="container">
+  <h1 class="page-title">My Reservations</h1>
+
+  <div class="cards-grid">
+      <div class="action-card" *ngFor="let card of cards" [routerLink]="card.path">
+        <div class="card-icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" [innerHTML]="card.svgPath"></svg>
+        </div>
+        <h3 class="card-title">{{ card.title }}</h3>
+      </div>
+
+  </div>
+</div>

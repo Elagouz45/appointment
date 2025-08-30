@@ -1,0 +1,48 @@
+<section class="card">
+  <h3 class="title">
+    {{ title }} — Person {{ currentIndex() + 1 }} of {{ peopleCount }}
+  </h3>
+
+  <!-- Person tabs -->
+  <div class="people-tabs">
+    <button
+      *ngFor="let i of persons; trackBy: trackByPerson"
+      type="button"
+      class="person-tab"
+      [class.active]="currentIndex() === i"
+      [class.done]="!!selectedFor(i)"
+      (click)="goToPerson(i)"
+    >
+      <span class="num">{{ i + 1 }}</span>
+      <span class="status">{{ selectedFor(i) ? 'Selected' : 'Pick product' }}</span>
+    </button>
+  </div>
+
+  <!-- Product grid -->
+  <div class="grid">
+    <button
+      class="prod-card"
+      type="button"
+      *ngFor="let p of products(); trackBy: trackById"
+      [class.selected]="isSelectedForCurrent(p)"
+      (click)="select(p)"
+    >
+      <span class="prod-name">{{ p.name }}</span>
+      <span class="prod-price">{{ p.priceSar }} SAR</span>
+    </button>
+  </div>
+
+  <!-- Controls -->
+  <div class="actions">
+    <div class="left">
+      <button class="btn btn-secondary" type="button" (click)="goBack()">Back</button>
+    </div>
+    <div>
+      <button class="btn btn-secondary " type="button" (click)="prevPerson()" [disabled]="currentIndex() === 0">Prev person</button>
+      <button class="btn btn-secondary mx-2" type="button" (click)="nextPerson()" [disabled]="currentIndex() === peopleCount - 1">Next person</button>
+
+      <button class="btn btn-primary next" type="button" [disabled]="!allSelected()" (click)="goNext()">Next</button>
+
+    </div>
+  </div>
+</section>

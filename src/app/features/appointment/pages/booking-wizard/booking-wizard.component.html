@@ -1,0 +1,44 @@
+<div class="wizard">
+  <div class="stepper">
+    <div class="step" [class.active]="step()===1" [class.done]="step()>1">1</div>
+    <div class="line"></div>
+    <div class="step" [class.active]="step()===2" [class.done]="step()>2">2</div>
+    <div class="line"></div>
+    <div class="step" [class.active]="step()===3" [class.done]="step()>3">3</div>
+    <div class="line"></div>
+    <div class="step" [class.active]="step()===4">4</div>
+  </div>
+
+  <ng-container [ngSwitch]="step()">
+    <app-reservation-step-one
+      *ngSwitchCase="1"
+      (nextStep)="onStep1Next($event)"
+      (cancelFlow)="onCancel()">
+    </app-reservation-step-one>
+
+    <app-product-select
+      *ngSwitchCase="2"
+      [title]="'Please Select Product'"
+      [peopleCount]="step1()?.people || 1"
+      (back)="step.set(1)"
+      (next)="onStep2Next($event)">
+    </app-product-select>
+
+    <app-appointment-time-step
+      *ngSwitchCase="3"
+      [servicesCount]="step1()?.people || 1"
+      (back)="step.set(2)"
+      (next)="onStep3Next($event)">
+    </app-appointment-time-step>
+
+    <app-payment-summary-step
+      *ngSwitchCase="4"
+      [fullName]="customerName"
+      [appointmentDateISO]="step3()?.dateISO || ''"
+      [appointmentTime]="step3()?.time || ''"
+      [items]="summaryItems()"
+      (back)="step.set(3)"
+      (confirm)="onConfirm($event)">
+    </app-payment-summary-step>
+  </ng-container>
+</div>

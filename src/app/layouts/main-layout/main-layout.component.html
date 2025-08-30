@@ -1,0 +1,13 @@
+<div class="app-container">
+  <app-header (toggleSidebar)="sidebarOpen.set(!sidebarOpen())"></app-header>
+  <div class="app-body">
+    <app-sidebar       [activePage]="activePage()"
+                       (pageChange)="onPageChange($event)"
+                       (toggleSidebar)="sidebarOpen.set(!sidebarOpen())"
+                       [open]="sidebarOpen()"></app-sidebar>
+    <main class="app-content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+  <app-footer></app-footer>
+</div>

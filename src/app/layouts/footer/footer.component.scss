@@ -1,0 +1,51 @@
+footer {
+    display: flex;
+    gap: 1.5rem;
+    padding: 20px 50px;
+    background-color: white;
+    justify-content: space-between;
+    margin-top: 85px;
+    flex-wrap: wrap;
+    .content-1 {
+        text-align: center;
+
+        .logo {
+            margin-bottom: 24px;
+        }
+
+        .cards {
+
+            display: flex;
+            gap: 15px;
+            align-items: center;
+
+
+            img {
+                width: 40px;
+            }
+        }
+    }
+
+    .links {
+        h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            text-transform: capitalize;
+
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                margin-bottom: 20px;
+
+                a {
+                    text-decoration: none;
+                    color: #000000cc;
+                }
+            }
+        }
+    }
+}

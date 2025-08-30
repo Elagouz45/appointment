@@ -1,0 +1,58 @@
+<section class="card">
+  <form [formGroup]="form" (ngSubmit)="next()" novalidate>
+    <div class="grid">
+      <!-- Branch select (inline design) -->
+      <div class="sb">
+        <label class="sb-label" for="branch">Please select branch <span class="req">*</span></label>
+        <div class="sb-field">
+          <select
+            id="branch"
+            class="sb-select"
+            formControlName="branch"
+          >
+            <option value="" disabled hidden>Select…</option>
+            <option *ngFor="let b of branches" [value]="b.value">{{ b.label }}</option>
+          </select>
+          <span class="sb-chev" aria-hidden="true">▾</span>
+        </div>
+        <div class="sb-help">
+          <small *ngIf="form.controls['branch'].touched && form.controls['branch'].invalid" class="sb-error">
+            Branch is required
+          </small>
+          <small *ngIf="!(form.controls['branch'].touched && form.controls['branch'].invalid)" class="sb-hint">
+            Choose the salon branch
+          </small>
+        </div>
+      </div>
+
+      <!-- People select (inline design) -->
+      <div class="sb">
+        <label class="sb-label" for="people">Number of people</label>
+        <div class="sb-field">
+          <select
+            id="people"
+            class="sb-select"
+            formControlName="people"
+          >
+            <option [ngValue]="null" disabled hidden>People</option>
+            <!-- use [ngValue] to keep numbers, not strings -->
+            <option *ngFor="let p of people" [ngValue]="p.value">{{ p.label }}</option>
+          </select>
+          <span class="sb-chev" aria-hidden="true">▾</span>
+        </div>
+        <div class="sb-help">
+          <small *ngIf="form.controls['people'].touched && form.controls['people'].invalid" class="sb-error">
+            Select at least 1 person
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="actions">
+      <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-primary" [disabled]="loading()">Next</button>
+    </div>
+  </form>
+</section>

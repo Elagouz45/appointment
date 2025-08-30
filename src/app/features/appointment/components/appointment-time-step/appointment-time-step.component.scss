@@ -1,0 +1,212 @@
+// .card {
+//   background: #ffffff;
+//   border: 1px solid #e5e7eb;
+//   border-radius: 12px;
+//   box-shadow: 0 2px 16px rgba(0, 0, 0, .06);
+//   padding: 1rem;
+// }
+
+.title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.subtitle {
+  margin: .15rem 0 .6rem;
+  color: var(--secondary-color);
+  opacity: .8;
+}
+
+.month-strip {
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .5rem;
+}
+
+.arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #f0fdfa;
+  color: var(--main-color);
+  cursor: pointer;
+}
+
+.arrow:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.months {
+  display: flex;
+  justify-content: center;
+}
+
+.month-pill {
+  padding: .5rem 1rem;
+  border-radius: 12px;
+  background: var(--main-color);
+  color: #fff;
+  font-weight: 700;
+}
+
+.days-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(92px, 1fr);
+  gap: .6rem;
+  overflow-x: auto;
+  padding-bottom: .25rem;
+  margin-bottom: .8rem;
+}
+
+.day-card {
+  text-align: center;
+  border: 1px solid var(--main-color);
+  color: var(--secondary-color);
+  background: #ffffff;
+  border-radius: 12px;
+  padding: .6rem .4rem;
+  min-height: 92px;
+  cursor: pointer;
+  transition: background .15s, box-shadow .15s, transform .05s;
+}
+
+.day-card .day-name {
+  font-weight: 700;
+  margin-bottom: .35rem;
+  color: var(--secondary-color);
+  opacity: .9;
+}
+
+.day-card .day-num {
+  font-weight: 700;
+}
+
+.day-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .07);
+}
+
+.day-card.selected {
+  background: var(--main-color);
+  border-color: var(--main-color);
+  .day-name, .day-num {
+    color: #ffffff;
+  }
+}
+
+.day-card.disabled {
+  background: #f3f4f6;
+  color: #9ca3af;
+  border-color: #e5e7eb;
+  cursor: not-allowed;
+}
+
+.section-title {
+  margin: .2rem 0 .25rem;
+  font-size: 1rem;
+  color: var(--secondary-color);
+}
+
+.services-count {
+  color: var(--secondary-color);
+  opacity: .9;
+  margin-bottom: .5rem;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .75rem;
+}
+
+.time-card {
+  border: 2px solid var(--main-color);
+  border-radius: 10px;
+  padding: 1.3rem 1.1rem;
+  text-align: left;
+  background: #ffffff;
+  cursor: pointer;
+  transition: box-shadow .15s, transform .05s, background .15s, border-color .15s;
+}
+
+.time-card .time {
+  font-weight: 800;
+  color: var(--main-color);
+}
+
+.time-card .sub {
+  color: var(--secondary-color);
+  opacity: .75;
+  margin-top: .15rem;
+  font-weight: 600;
+}
+
+.time-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .07);
+}
+
+.time-card.unavailable {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.time-card.selected {
+  background: var(--main-color);
+  color: #ffffff;
+  border-color: var(--main-color);
+
+  div {
+    color: #ffffff;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: .75rem;
+  padding-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border-radius: 10px;
+  padding: .6rem 1.1rem;
+  font-weight: 700;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--main-color);
+  color: #fff;
+}
+
+.btn-primary:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #f3f4f6;
+  border-color: #e5e7eb;
+  color: #111827;
+}
+
+.days-row {
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+}
+
+.day-card {
+  scroll-snap-align: center;
+}
+
+@media (min-width: 900px) {
+  .time-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

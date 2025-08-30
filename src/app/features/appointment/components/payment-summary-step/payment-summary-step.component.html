@@ -1,0 +1,82 @@
+<section class="wrap">
+  <div class="panel">
+    <div class="panel-title">Payment Details</div>
+
+    <div class="row">
+      <span>Subtotal</span>
+      <strong>{{ formatMoney(subtotal) }} SAR</strong>
+    </div>
+    <div class="row red">
+      <span>Discount</span>
+      <strong>{{ formatMoney(discount) }} SAR</strong>
+    </div>
+    <div class="row">
+      <span>Taxable Amount</span>
+      <strong>{{ formatMoney(taxableAmount) }} SAR</strong>
+    </div>
+    <div class="row">
+      <span>Tax</span>
+      <strong>{{ formatMoney(tax) }} SAR</strong>
+    </div>
+    <div class="row total">
+      <span>Total</span>
+      <strong>{{ formatMoney(total) }} SAR</strong>
+    </div>
+
+    <div class="field">
+      <label>Coupon</label>
+      <div class="input-row">
+        <input class="input" placeholder="Enter Coupon" [(ngModel)]="coupon" />
+        <button class="btn apply" type="button" (click)="applyCoupon()">Apply</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Loyalty Points</label>
+      <div class="input-row">
+        <input class="input" type="number" min="0" [(ngModel)]="points" />
+        <button class="btn apply" type="button" (click)="applyPoints()">Apply</button>
+      </div>
+      <small class="hint">You have 0 SAR</small>
+    </div>
+
+    <div class="pm-title">Select a Payment Method</div>
+    <div class="payments">
+      <button type="button" class="pm" [class.active]="paymentMethod==='mada'"        (click)="pickMethod('mada')">mada</button>
+      <button type="button" class="pm" [class.active]="paymentMethod==='apple-pay'"   (click)="pickMethod('apple-pay')">Pay</button>
+      <button type="button" class="pm" [class.active]="paymentMethod==='visa'"        (click)="pickMethod('visa')">VISA</button>
+      <button type="button" class="pm" [class.active]="paymentMethod==='mastercard'"  (click)="pickMethod('mastercard')">Mastercard</button>
+    </div>
+
+    <div class="footer">
+      <button type="button" class="btn back" (click)="onBack()">Back</button>
+      <button type="button" class="btn next" [disabled]="!paymentMethod" (click)="onConfirm()">Pay {{ formatMoney(total) }} SAR</button>
+    </div>
+  </div>
+
+  <aside class="side">
+    <div class="panel-title">Appointment Details</div>
+
+    <div class="detail">
+      <div class="label">Details of your Appointment</div>
+      <div class="value"></div>
+    </div>
+    <div class="detail">
+      <div class="label">Full Name</div>
+      <div class="value">{{ fullName }}</div>
+    </div>
+    <div class="detail">
+      <div class="label">Date</div>
+      <div class="value">{{ appointmentDateISO | date:'dd/MM/yyyy' }} {{ appointmentTime }}</div>
+    </div>
+
+    <ng-container *ngFor="let it of items">
+      <div class="person">One Person {{ it.person }}</div>
+      <div class="label small">Services</div>
+      <div class="svc">
+        <span>{{ it.name }}</span>
+        <strong>{{ formatMoney(it.priceSar) }} SAR</strong>
+      </div>
+    </ng-container>
+  </aside>
+</section>

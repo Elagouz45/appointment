@@ -1,0 +1,57 @@
+<section class="card">
+  <h2 class="title">Book an appointment</h2>
+  <p class="subtitle">Please Select Date And Time</p>
+
+  <!-- Month strip (RTL-friendly) -->
+  <div class="month-strip" dir="rtl">
+    <button class="arrow" type="button" (click)="prevMonth()" [disabled]="!canGoPrevMonth()">‹</button>
+
+    <div class="months">
+      <div class="month-pill">{{ monthLabel() }} {{yearLabel()}}</div>
+    </div>
+
+    <button class="arrow" type="button" (click)="nextMonth()">›</button>
+  </div>
+
+  <!-- Days row (scrollable) -->
+  <div class="days-row" dir="rtl" #daysRow>
+    <button
+      class="day-card"
+      type="button"
+      *ngFor="let d of daysOfMonth(); trackBy: trackByDate"
+      [class.selected]="d.selected"
+      [class.disabled]="d.disabled"
+      (click)="chooseDate(d.date)"
+      [disabled]="d.disabled"
+    >
+      <div class="day-name">{{ d.dayName }}</div>
+      <div class="day-num">{{ d.label }}</div>
+    </button>
+  </div>
+
+  <h3 class="section-title">Please Select Time</h3>
+  <div class="services-count">
+    Number of selected Services <strong>{{ servicesCount }}</strong>
+  </div>
+  <!-- Time grid -->
+  <div class="time-grid">
+    <button
+      class="time-card"
+      type="button"
+      *ngFor="let s of baseTimeSlots trackBy: trackByTime"
+      [class.selected]="selectedTime() === s.time"
+      [class.unavailable]="slotDisabled(s)"
+      [disabled]="slotDisabled(s) || !selectedDate()"
+      (click)="chooseTime(s.time)"
+    >
+      <div class="time">{{ s.time }}</div>
+      <div class="sub">{{ s.available }} Appointments</div>
+    </button>
+  </div>
+
+  <!-- Footer actions -->
+  <div class="actions">
+    <button class="btn btn-secondary" type="button" (click)="goBack()">Back</button>
+    <button class="btn btn-primary" type="button" (click)="goNext()" [disabled]="!selectedDate() || !selectedTime()">Next</button>
+  </div>
+</section>

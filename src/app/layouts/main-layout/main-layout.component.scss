@@ -1,0 +1,22 @@
+/* App Layout */
+.app-container {
+  //display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f2f2ed61;
+}
+.app-body{
+  display: flex;
+  gap: 1rem;
+}
+.app-content{
+  width: calc(100% - 300px);
+  height: auto;
+  // overflow: auto;
+}
+@media (max-width: 960px) {
+  .app-content{
+    width: 100%;
+  }
+  
+}

@@ -1,0 +1,13 @@
+<div class="app-container sidebar-container">
+  <aside class="sidebar" [class.open]="open" id="sidebar">
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item" [routerLink]="'/appointment'" [class.active]="activePage==='reservation'" (click)="onNavClick($event, 'reservation')" role="button" [attr.aria-current]="activePage==='reservation' ? 'page' : null">
+        <span class="nav-text">Reservation</span>
+      </a>
+
+           <a href="#" class="nav-item" (click)="onNavClick($event, 'reservation')" role="button" [attr.aria-current]="activePage==='reservation' ? 'page' : null">
+        <span class="nav-text">Gift Cards</span>
+      </a>
+    </nav>
+  </aside>
+</div>

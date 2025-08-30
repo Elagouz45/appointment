@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+:root{
+    --main-color:#0a5a6c;
+    --secondary-color:#0f172a;
+}
+
+body,html{
+    overflow-x: hidden;
+    font-family: 'Asta Sans'
+}
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  padding: 1.25rem;
+}
+.title {
+  color: var(--main-color);;
+  font-weight: 700;
+}

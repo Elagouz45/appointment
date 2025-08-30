@@ -1,0 +1,121 @@
+/* Card & layout */
+// .card {
+//   background: #ffffff;
+//   border: 1px solid #e5e7eb;
+//   border-radius: 12px;
+//   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+//   padding: 1.25rem;
+// }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  background: #e5e7eb;
+  margin: 1rem 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.btn {
+  border-radius: 10px;
+  padding: 0.6rem 1.1rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--main-color);;
+  color: #ffffff;
+  border-color: var(--main-color);;
+}
+
+.btn-primary:hover {
+  background: #0b5f59;
+}
+
+.btn-secondary {
+  background: #f3f4f6;
+  border-color: #e5e7eb;
+  color: #111827;
+}
+
+/* Inline select design */
+.sb {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.sb-label {
+  font-weight: 600;
+  color: var(--main-color);;
+}
+
+.req {
+  color: #ef4444;
+  margin-left: 0.15rem;
+}
+
+.sb-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sb-select {
+  appearance: none;
+  width: 100%;
+  padding: 0.65rem 2.25rem 0.65rem 0.9rem;
+  border: 1px solid #cbd5e1; /* slate-300 */
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--secondary-color);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  margin: 8px 10px;
+}
+
+.sb-select:hover {
+  border-color: #94a3b8; /* slate-400 */
+}
+
+.sb-select:focus {
+  border-color: var(--main-color);;              /* teal */
+  box-shadow: 0 0 0 3px #c9eeeb;      /* teal focus ring */
+}
+
+.sb-chev {
+  position: absolute;
+  right: 0.5rem;
+  pointer-events: none;
+  color: #6b7280; /* muted */
+}
+
+.sb-help {
+  min-height: 1rem;
+}
+
+.sb-hint {
+  color: #6b7280; /* muted */
+}
+
+.sb-error {
+  color: #b91c1c;
+}
